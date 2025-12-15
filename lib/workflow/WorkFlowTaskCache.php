@@ -1,0 +1,164 @@
+<?php
+/*
+ * Copyright (c) 2025 Bloxtor (http://bloxtor.com) and Joao Pinto (http://jplpinto.com)
+ * 
+ * Multi-licensed: BSD 3-Clause | Apache 2.0 | GNU LGPL v3 | HLNC License (http://bloxtor.com/LICENSE_HLNC.md)
+ * Choose one license that best fits your needs.
+ *
+ * Original PHP to Workflow Diagram Repo: https://github.com/a19836/phptoworkflowdiagram/
+ * Original Bloxtor Repo: https://github.com/a19836/bloxtor
+ *
+ * YOU ARE NOT AUTHORIZED TO MODIFY OR REMOVE ANY PART OF THIS NOTICE!
+ */
+
+include_once get_lib("cache.xmlsettings.filesystem.FileSystemXmlSettingsCacheHandler");
+include_once get_lib("cache.CacheHandlerUtil");
+
+class WorkFlowTaskCache extends FileSystemXmlSettingsCacheHandler {
+	/*private*/ const CACHE_DIR_NAME = "workflow/__system/";
+	/*private*/ const LOADED_TASKS_FILE_NAME = "loaded_tasks";
+	/*private*/ const LOADED_TASKS_INCLUDES_FILE_NAME = "loaded_tasks_includes";
+	/*private*/ const LOADED_TASKS_SETTINGS_FILE_NAME = "loaded_tasks_settings";
+	/*private*/ const LOADED_TASKS_CONTAINERS_FILE_NAME = "loaded_tasks_containers";
+	
+	protected $cache_root_path;
+	protected $is_active = false;
+	
+	/******* START: Loaded Tasks *******/
+	public function cachedLoadedTasksExists($tasks_id) {
+		$file_path = $this->getCachedFilePath(self::LOADED_TASKS_FILE_NAME . "_" . $tasks_id);
+		
+		if($file_path && $this->isCacheValid($file_path)) {
+			$this->prepareFilePath($file_path);
+			return file_exists($file_path) && file_get_contents($file_path);
+		}
+		return false;
+	}
+	
+	public function getCachedLoadedTasks($tasks_id) {
+		$file_path = $this->getCachedFilePath(self::LOADED_TASKS_FILE_NAME . "_" . $tasks_id);
+		return $this->getCache($file_path);
+	}
+	
+	public function setCachedLoadedTasks($tasks_id, $data) {
+		$file_path = $this->getCachedFilePath(self::LOADED_TASKS_FILE_NAME . "_" . $tasks_id);
+		if($file_path) {
+			return $this->setCache($file_path, $data);
+		}
+		return true;
+	}
+	/******* END: Loaded Tasks *******/
+	
+	/******* START: Loaded Tasks Includes *******/
+	public function cachedLoadedTasksIncludesExists($tasks_id) {
+		$file_path = $this->getCachedFilePath(self::LOADED_TASKS_INCLUDES_FILE_NAME . "_" . $tasks_id);
+	
+		if($file_path && $this->isCacheValid($file_path)) {
+			$this->prepareFilePath($file_path);
+			return file_exists($file_path) && file_get_contents($file_path);
+		}
+		return false;
+	}
+	
+	public function getCachedLoadedTasksIncludes($tasks_id) {
+		$file_path = $this->getCachedFilePath(self::LOADED_TASKS_INCLUDES_FILE_NAME . "_" . $tasks_id);
+		return $this->getCache($file_path);
+	}
+	
+	public function setCachedLoadedTasksIncludes($tasks_id, $data) {
+		$file_path = $this->getCachedFilePath(self::LOADED_TASKS_INCLUDES_FILE_NAME . "_" . $tasks_id);
+		if($file_path) {
+			return $this->setCache($file_path, $data);
+		}
+		return true;
+	}
+	/******* END: Loaded Tasks Includes *******/
+	
+	/******* START: Loaded Tasks Settings *******/
+	public function cachedLoadedTasksSettingsExists($tasks_id) {
+		$file_path = $this->getCachedFilePath(self::LOADED_TASKS_SETTINGS_FILE_NAME . "_" . $tasks_id);
+		
+		if($file_path && $this->isCacheValid($file_path)) {
+			$this->prepareFilePath($file_path);
+			return file_exists($file_path) && file_get_contents($file_path);
+		}
+		return false;
+	}
+	
+	public function getCachedLoadedTasksSettings($tasks_id) {
+		$file_path = $this->getCachedFilePath(self::LOADED_TASKS_SETTINGS_FILE_NAME . "_" . $tasks_id);
+		return $this->getCache($file_path);
+	}
+	
+	public function setCachedLoadedTasksSettings($tasks_id, $data) {
+		$file_path = $this->getCachedFilePath(self::LOADED_TASKS_SETTINGS_FILE_NAME . "_" . $tasks_id);
+		if($file_path) {
+			return $this->setCache($file_path, $data);
+		}
+		return true;
+	}
+	/******* END: Loaded Tasks Settings *******/
+	
+	/******* START: Loaded Tasks Containers *******/
+	public function cachedTasksContainersExists($tasks_id) {
+		$file_path = $this->getCachedFilePath(self::LOADED_TASKS_CONTAINERS_FILE_NAME . "_" . $tasks_id);
+		
+		if($file_path && $this->isCacheValid($file_path)) {
+			$this->prepareFilePath($file_path);
+			return file_exists($file_path) && file_get_contents($file_path);
+		}
+		return false;
+	}
+	
+	public function getCachedTasksContainers($tasks_id) {
+		$file_path = $this->getCachedFilePath(self::LOADED_TASKS_CONTAINERS_FILE_NAME . "_" . $tasks_id);
+		return $this->getCache($file_path);
+	}
+	
+	public function setCachedTasksContainers($tasks_id, $data) {
+		$file_path = $this->getCachedFilePath(self::LOADED_TASKS_CONTAINERS_FILE_NAME . "_" . $tasks_id);
+		if($file_path) {
+			return $this->setCache($file_path, $data);
+		}
+		return true;
+	}
+	/******* END: Loaded Tasks Containers *******/
+	
+	/******* START: COMMON *******/
+	public function initCacheDirPath($dir_path) {
+		if(!$this->cache_root_path) {
+			if($dir_path) {
+				CacheHandlerUtil::configureFolderPath($dir_path);
+				$dir_path .= self::CACHE_DIR_NAME;
+				
+				if(CacheHandlerUtil::preparePath($dir_path)) {
+					CacheHandlerUtil::configureFolderPath($dir_path);
+					$this->cache_root_path = $dir_path;
+					
+					$this->is_active = true;
+				}
+			}
+		}
+	}
+	
+	public function isActive() {
+		return $this->is_active;
+	}
+	
+	public function getCachedFilePath($file_path) {
+		if($this->cache_root_path && $file_path) {
+			return $this->cache_root_path . $file_path;
+		}
+		return false;
+	}
+	
+	public function getCachedId($tasks_folder_paths) {
+		return md5(serialize($tasks_folder_paths));
+	}
+	
+	public function flushCache() {
+		return CacheHandlerUtil::deleteFolder($this->cache_root_path);
+	}
+	/******* END: COMMON *******/
+}
+?>

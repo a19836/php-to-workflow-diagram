@@ -1,0 +1,65 @@
+/*
+ * Copyright (c) 2025 Bloxtor (http://bloxtor.com) and Joao Pinto (http://jplpinto.com)
+ * 
+ * Multi-licensed: BSD 3-Clause | Apache 2.0 | GNU LGPL v3 | HLNC License (http://bloxtor.com/LICENSE_HLNC.md)
+ * Choose one license that best fits your needs.
+ *
+ * Original PHP to Workflow Diagram Repo: https://github.com/a19836/phptoworkflowdiagram/
+ * Original Bloxtor Repo: https://github.com/a19836/bloxtor
+ *
+ * YOU ARE NOT AUTHORIZED TO MODIFY OR REMOVE ANY PART OF THIS NOTICE!
+ */
+
+.taskflowchartmenu .task.task_createfunction {
+	background-image:url('../img/bg.svg');
+}
+.taskflowchartdiagram .task.task_createfunction .eps {
+	background-image:url('../img/bg_hover.svg');
+}
+.taskflowchartdiagram .task.task_createfunction .ep {
+	border-color:transparent !important;
+	background-color:transparent !important;
+}
+
+.create_function_task_html > .name,
+  .create_function_task_html > .type,
+  .create_function_task_html > .abstract,
+  .create_function_task_html > .static,
+  .create_function_task_html > .code,
+  .create_function_task_html > .arguments {
+	width:100%;
+	min-height:20px;
+	margin-top:10px;
+	margin-bottom:5px;
+}
+.create_function_task_html > .arguments {
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.create_function_task_html > .name label,
+  .create_function_task_html > .type label,
+  .create_function_task_html > .abstract label,
+  .create_function_task_html > .static label {
+	width:100px;
+}
+.taskflowchart.fixed_side_properties .selected_task_properties .create_function_task_html > .name label {
+	width:35px;
+}
+.taskflowchart.fixed_side_properties .selected_task_properties .create_function_task_html > .name input {
+	width:calc(100% - 50px);
+}
+.create_function_task_html > .code label {
+	width:70px;
+}
+.create_function_task_html > .code .icon.update::before {
+	content:"\f303";
+	margin-top: 2px;
+	display: inline-block;
+}
+
+.create_function_task_html > .arguments > label {
+	width:100%;
+	margin-bottom:5px;
+	display:block;
+	float:none;
+}

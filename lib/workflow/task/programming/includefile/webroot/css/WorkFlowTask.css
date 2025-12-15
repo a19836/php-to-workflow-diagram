@@ -1,0 +1,61 @@
+/*
+ * Copyright (c) 2025 Bloxtor (http://bloxtor.com) and Joao Pinto (http://jplpinto.com)
+ * 
+ * Multi-licensed: BSD 3-Clause | Apache 2.0 | GNU LGPL v3 | HLNC License (http://bloxtor.com/LICENSE_HLNC.md)
+ * Choose one license that best fits your needs.
+ *
+ * Original PHP to Workflow Diagram Repo: https://github.com/a19836/phptoworkflowdiagram/
+ * Original Bloxtor Repo: https://github.com/a19836/bloxtor
+ *
+ * YOU ARE NOT AUTHORIZED TO MODIFY OR REMOVE ANY PART OF THIS NOTICE!
+ */
+
+.taskflowchartmenu .task.task_includefile {
+	background-image:url('../img/bg.svg');
+}
+.taskflowchartdiagram .task.task_includefile .eps {
+	background-image:url('../img/bg_hover.svg');
+}
+.taskflowchartdiagram .task.task_includefile .ep {
+	border-color:transparent !important;
+	background-color:transparent !important;
+}
+
+.include_file_task_html {
+	width:420px;
+}
+.taskflowchart.fixed_side_properties .selected_task_properties .include_file_task_html {
+	width:100%;
+}
+
+.include_file_task_html .file_path {
+	/*margin-top:15px;*/
+}
+.include_file_task_html .type {
+	margin-top:5px;
+	margin-bottom:5px;
+}
+.include_file_task_html .file_path, 
+  .include_file_task_html .type, 
+  .include_file_task_html .once {
+	width:100%;
+	min-height:20px;
+}
+.include_file_task_html .file_path label, 
+  .include_file_task_html .type label, 
+  .include_file_task_html .once label {
+	width:100px;
+}
+.taskflowchart.fixed_side_properties .selected_task_properties .include_file_task_html .file_path label, 
+  .taskflowchart.fixed_side_properties .selected_task_properties .include_file_task_html .type label, 
+  .taskflowchart.fixed_side_properties .selected_task_properties .include_file_task_html .once label {
+	width:65px;
+}
+.include_file_task_html .file_path input {
+	width:255px;   
+}
+.taskflowchart.fixed_side_properties .selected_task_properties .include_file_task_html .file_path input {
+	width:calc(100% - 100px);  
+}
+
+

@@ -1,0 +1,36 @@
+/*
+ * Copyright (c) 2025 Bloxtor (http://bloxtor.com) and Joao Pinto (http://jplpinto.com)
+ * 
+ * Multi-licensed: BSD 3-Clause | Apache 2.0 | GNU LGPL v3 | HLNC License (http://bloxtor.com/LICENSE_HLNC.md)
+ * Choose one license that best fits your needs.
+ *
+ * Original PHP to Workflow Diagram Repo: https://github.com/a19836/phptoworkflowdiagram/
+ * Original Bloxtor Repo: https://github.com/a19836/bloxtor
+ *
+ * YOU ARE NOT AUTHORIZED TO MODIFY OR REMOVE ANY PART OF THIS NOTICE!
+ */
+
+.phptoworkflow {padding:0; position:absolute; top:0px; left:0; right:0; bottom:0; border:0; font-size:0.9em !important;}
+
+.tabs {background:none; border:0;}
+.tabs .ui-state-default {border:1px solid #aaaaaa; background:#ffffff url("../../jquerytaskflowchart/lib/jqueryui/img//jquery-ui-1.11.4-smoothness-images/ui-bg_glass_65_ffffff_1x400.png") 50% 50% repeat-x; opacity:.7; float:right !important;}
+.tabs .ui-state-active {border:1px solid #d3d3d3 !important; border-bottom:0 !important; background:#e6e6e6 url(../../jquerytaskflowchart/lib/jqueryui/img/jquery-ui-1.11.4-smoothness-images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x !important; opacity:1;}
+
+.code {padding:0 !important; border-top:1px solid #d3d3d3 !important;}
+.code > textarea, .code > .ace_editor {width:100%; height:calc(100vh - 65px) !important; box-sizing: border-box;}
+
+#ui {padding:0; border-top:1px solid #d3d3d3 !important;}
+.taskflowchart {height:calc(100vh - 32px) !important; position:relative; overflow: hidden;}
+
+.menu  {height:30px; background:#e6e6e6 url(../../jquerytaskflowchart/lib/jqueryui/img/jquery-ui-1.11.4-smoothness-images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x !important; border:0 !important; border-bottom:1px solid #d3d3d3 !important; box-sizing:border-box !important;}
+.menu.workflow_menu {z-index:5 !important;}
+.menu.code_menu {z-index:5; position:relative;}
+.menu .dropdown {margin:0; padding:0;}
+.menu .dropdown li {background: none !important; font-weight: inherit !important; border-left:1px solid #d3d3d3 !important;}
+.menu .dropdown li a {font-size:inherit !important;}
+.menu .dropdown li a:hover {color:inherit !important; text-decoration:none;}
+.menu .dropdown li ul {background: #eee !important;}
+.menu .dropdown li ul li {border-left:1px solid #d3d3d3 !important; border-right:1px solid #d3d3d3 !important;}
+.menu .dropdown li ul li:first-child {border-top:1px solid #d3d3d3 !important; border-top-right-radius:3px !important;}
+.menu .dropdown li ul li:last-child {border-bottom-left-radius:3px; border-bottom-right-radius:3px;}
+.menu .dropdown li ul li:hover {background: #4070FF !important; color:#fff !important;}
