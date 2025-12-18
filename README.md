@@ -1,7 +1,7 @@
 # PHP to Workflow Diagram
 
 > Original Repos:   
-> - PHP to Workflow Diagram: https://github.com/a19836/phptoworkflowdiagram/   
+> - PHP to Workflow Diagram: https://github.com/a19836/php-to-workflow-diagram/   
 > - Bloxtor: https://github.com/a19836/bloxtor/
 
 ## Overview
